@@ -678,137 +678,19 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _client = require("react-dom/client");
 var _clientDefault = parcelHelpers.interopDefault(_client);
-var _timelineItemsJs = require("./timelineItems.js");
-var _timelineItemsJsDefault = parcelHelpers.interopDefault(_timelineItemsJs);
-var _assignLanesJs = require("./assignLanes.js");
-var _react = require("react");
-var _s = $RefreshSig$();
+var _home = require("./pages/Home");
 function App() {
-    _s();
-    const [lanes, setLanes] = (0, _react.useState)((0, _assignLanesJs.assignLanes)((0, _timelineItemsJsDefault.default)));
-    const [dragging, setDragging] = (0, _react.useState)({
-        laneIndex: null,
-        itemIndex: null
-    });
-    const [hovered, setHovered] = (0, _react.useState)({
-        laneIndex: null,
-        itemIndex: null
-    });
-    const handleDragStart = (laneIndex, itemIndex)=>{
-        setDragging({
-            laneIndex,
-            itemIndex
-        });
-    };
-    const handleDragOver = (0, _react.useCallback)((e)=>{
-        e.preventDefault();
-    }, []);
-    const handleDragDrop = (laneIndex, itemIndex)=>{
-        if (dragging.laneIndex === null || dragging.itemIndex === null) return;
-        const newLanes = lanes.map((lane)=>[
-                ...lane
-            ]);
-        const [movedItem] = newLanes[dragging.laneIndex].splice(dragging.itemIndex, 1);
-        newLanes[laneIndex].splice(itemIndex, 0, movedItem);
-        setLanes(newLanes);
-        setDragging({
-            laneIndex: null,
-            itemIndex: null
-        });
-    };
-    const handleDragEnter = (laneIndex, itemIndex)=>{
-        setHovered({
-            laneIndex,
-            itemIndex
-        });
-    };
-    const handleDragEnd = ()=>{
-        setHovered({
-            laneIndex: null,
-            itemIndex: null
-        });
-        setDragging({
-            laneIndex: null,
-            itemIndex: null
-        });
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "wrapper",
-            children: lanes.map((laneItems, laneIndex)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                    className: "wrapper-timeline",
-                    children: laneItems.map(({ id, name, start, end }, itemIndex)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: `
-                  ${dragging.laneIndex === laneIndex && dragging.itemIndex === itemIndex && "dragging"}
-                  ${hovered.laneIndex === laneIndex && hovered.itemIndex === itemIndex && "hovered"}
-                `,
-                            draggable: true,
-                            onDragStart: ()=>handleDragStart(laneIndex, itemIndex),
-                            onDragOver: handleDragOver,
-                            onDrop: ()=>handleDragDrop(laneIndex, itemIndex),
-                            onDragEnter: ()=>handleDragEnter(laneIndex, itemIndex),
-                            onDragEnd: handleDragEnd,
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "content",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                            children: name
-                                        }, void 0, false, {
-                                            fileName: "src/index.js",
-                                            lineNumber: 77,
-                                            columnNumber: 21
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "src/index.js",
-                                        lineNumber: 76,
-                                        columnNumber: 19
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        children: [
-                                            "started at: ",
-                                            start,
-                                            " and ended at: ",
-                                            end
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/index.js",
-                                        lineNumber: 79,
-                                        columnNumber: 19
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/index.js",
-                                lineNumber: 75,
-                                columnNumber: 17
-                            }, this)
-                        }, id, false, {
-                            fileName: "src/index.js",
-                            lineNumber: 54,
-                            columnNumber: 15
-                        }, this))
-                }, laneIndex, false, {
-                    fileName: "src/index.js",
-                    lineNumber: 52,
-                    columnNumber: 11
-                }, this))
-        }, void 0, false, {
-            fileName: "src/index.js",
-            lineNumber: 50,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _home.Home), {}, void 0, false, {
         fileName: "src/index.js",
-        lineNumber: 49,
-        columnNumber: 5
+        lineNumber: 5,
+        columnNumber: 10
     }, this);
 }
-_s(App, "vmAaT+/pLvjAD+U1kQOkkItgCXY=");
 _c = App;
 const root = (0, _clientDefault.default).createRoot(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 93,
+    lineNumber: 9,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -819,7 +701,7 @@ $RefreshReg$(_c, "App");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react-dom/client":"hrvwu","./timelineItems.js":"FMnwD","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react":"jMk1U","./assignLanes.js":"d7Zep"}],"dVPUn":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react-dom/client":"hrvwu","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./pages/Home":"4vy7i"}],"dVPUn":[function(require,module,exports,__globalThis) {
 'use strict';
 module.exports = require("ee51401569654d91");
 
@@ -25062,110 +24944,7 @@ module.exports = require("ef03b89c8fe2794e");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === 'function') __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"FMnwD":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const timelineItems = [
-    {
-        id: 1,
-        start: "2021-01-14",
-        end: "2021-01-22",
-        name: "Recruit translators"
-    },
-    {
-        id: 2,
-        start: "2021-01-17",
-        end: "2021-01-31",
-        name: "Create lesson plan 1"
-    },
-    {
-        id: 3,
-        start: "2021-02-05",
-        end: "2021-02-13",
-        name: "Translate phrases for lesson 1"
-    },
-    {
-        id: 4,
-        start: "2021-02-07",
-        end: "2021-03-08",
-        name: "Create dark mode design"
-    },
-    {
-        id: 5,
-        start: "2021-02-14",
-        end: "2021-02-22",
-        name: "Recruit copyeditors"
-    },
-    {
-        id: 6,
-        start: "2021-02-18",
-        end: "2021-02-24",
-        name: "Proofread translations for lesson 1"
-    },
-    {
-        id: 7,
-        start: "2021-02-20",
-        end: "2021-02-22",
-        name: "Finalize logo"
-    },
-    {
-        id: 8,
-        start: "2021-02-21",
-        end: "2021-03-22",
-        name: "Implement dark mode"
-    },
-    {
-        id: 9,
-        start: "2021-02-21",
-        end: "2021-02-28",
-        name: "Finalize lesson plan 1"
-    },
-    {
-        id: 10,
-        start: "2021-02-23",
-        end: "2021-02-23",
-        name: "Approve logo"
-    },
-    {
-        id: 11,
-        start: "2021-03-03",
-        end: "2021-03-29",
-        name: "Create lesson plan 2"
-    },
-    {
-        id: 12,
-        start: "2021-03-30",
-        end: "2021-04-08",
-        name: "Translate phrases for lesson 2"
-    },
-    {
-        id: 13,
-        start: "2021-04-01",
-        end: "2021-04-04",
-        name: "Debug mobile notification error"
-    },
-    {
-        id: 14,
-        start: "2021-04-05",
-        end: "2021-04-06",
-        name: "Test debugged mobile notifications"
-    },
-    {
-        id: 15,
-        start: "2021-04-16",
-        end: "2021-04-30",
-        name: "Beta test"
-    },
-    {
-        id: 16,
-        start: "2021-05-01",
-        end: "2021-05-01",
-        name: "Launch day"
-    }
-];
-exports.default = timelineItems;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jnFvT":[function(require,module,exports,__globalThis) {
+},{}],"jnFvT":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -27473,7 +27252,257 @@ function $da9882e673ac146b$var$ErrorOverlay() {
     return null;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"d7Zep":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"4vy7i":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$20c5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$20c5.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$20c5.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Home", ()=>Home);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _timelineItemsJs = require("../utils/timelineItems.js");
+var _timelineItemsJsDefault = parcelHelpers.interopDefault(_timelineItemsJs);
+var _assignLanesJs = require("../utils/assignLanes.js");
+var _react = require("react");
+var _s = $RefreshSig$();
+function Home() {
+    _s();
+    const [lanes, setLanes] = (0, _react.useState)((0, _assignLanesJs.assignLanes)((0, _timelineItemsJsDefault.default)));
+    const [dragging, setDragging] = (0, _react.useState)({
+        laneIndex: null,
+        itemIndex: null
+    });
+    const [hovered, setHovered] = (0, _react.useState)({
+        laneIndex: null,
+        itemIndex: null
+    });
+    const handleDragStart = (laneIndex, itemIndex)=>{
+        setDragging({
+            laneIndex,
+            itemIndex
+        });
+    };
+    const handleDragOver = (0, _react.useCallback)((e)=>{
+        e.preventDefault();
+    }, []);
+    const handleDragDrop = (laneIndex, itemIndex)=>{
+        if (dragging.laneIndex === null || dragging.itemIndex === null) return;
+        const newLanes = lanes.map((lane)=>[
+                ...lane
+            ]);
+        const [movedItem] = newLanes[dragging.laneIndex].splice(dragging.itemIndex, 1);
+        newLanes[laneIndex].splice(itemIndex, 0, movedItem);
+        setLanes(newLanes);
+        setDragging({
+            laneIndex: null,
+            itemIndex: null
+        });
+    };
+    const handleDragEnter = (laneIndex, itemIndex)=>{
+        setHovered({
+            laneIndex,
+            itemIndex
+        });
+    };
+    const handleDragEnd = ()=>{
+        setHovered({
+            laneIndex: null,
+            itemIndex: null
+        });
+        setDragging({
+            laneIndex: null,
+            itemIndex: null
+        });
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "wrapper",
+            children: lanes.map((laneItems, laneIndex)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                    className: "wrapper-timeline",
+                    children: laneItems.map(({ id, name, start, end }, itemIndex)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            className: `
+                  ${dragging.laneIndex === laneIndex && dragging.itemIndex === itemIndex && "dragging"}
+                  ${hovered.laneIndex === laneIndex && hovered.itemIndex === itemIndex && "hovered"}
+                `,
+                            draggable: true,
+                            onDragStart: ()=>handleDragStart(laneIndex, itemIndex),
+                            onDragOver: handleDragOver,
+                            onDrop: ()=>handleDragDrop(laneIndex, itemIndex),
+                            onDragEnter: ()=>handleDragEnter(laneIndex, itemIndex),
+                            onDragEnd: handleDragEnd,
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "content",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                            children: name
+                                        }, void 0, false, {
+                                            fileName: "src/pages/Home.js",
+                                            lineNumber: 76,
+                                            columnNumber: 21
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "src/pages/Home.js",
+                                        lineNumber: 75,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        children: [
+                                            "started at: ",
+                                            start,
+                                            " and ended at: ",
+                                            end
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/pages/Home.js",
+                                        lineNumber: 78,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/pages/Home.js",
+                                lineNumber: 74,
+                                columnNumber: 17
+                            }, this)
+                        }, id, false, {
+                            fileName: "src/pages/Home.js",
+                            lineNumber: 53,
+                            columnNumber: 15
+                        }, this))
+                }, laneIndex, false, {
+                    fileName: "src/pages/Home.js",
+                    lineNumber: 51,
+                    columnNumber: 11
+                }, this))
+        }, void 0, false, {
+            fileName: "src/pages/Home.js",
+            lineNumber: 49,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "src/pages/Home.js",
+        lineNumber: 48,
+        columnNumber: 5
+    }, this);
+}
+_s(Home, "vmAaT+/pLvjAD+U1kQOkkItgCXY=");
+_c = Home;
+var _c;
+$RefreshReg$(_c, "Home");
+
+  $parcel$ReactRefreshHelpers$20c5.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","../utils/timelineItems.js":"dtnYt","../utils/assignLanes.js":"1SgpI","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dtnYt":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const timelineItems = [
+    {
+        id: 1,
+        start: "2021-01-14",
+        end: "2021-01-22",
+        name: "Recruit translators"
+    },
+    {
+        id: 2,
+        start: "2021-01-17",
+        end: "2021-01-31",
+        name: "Create lesson plan 1"
+    },
+    {
+        id: 3,
+        start: "2021-02-05",
+        end: "2021-02-13",
+        name: "Translate phrases for lesson 1"
+    },
+    {
+        id: 4,
+        start: "2021-02-07",
+        end: "2021-03-08",
+        name: "Create dark mode design"
+    },
+    {
+        id: 5,
+        start: "2021-02-14",
+        end: "2021-02-22",
+        name: "Recruit copyeditors"
+    },
+    {
+        id: 6,
+        start: "2021-02-18",
+        end: "2021-02-24",
+        name: "Proofread translations for lesson 1"
+    },
+    {
+        id: 7,
+        start: "2021-02-20",
+        end: "2021-02-22",
+        name: "Finalize logo"
+    },
+    {
+        id: 8,
+        start: "2021-02-21",
+        end: "2021-03-22",
+        name: "Implement dark mode"
+    },
+    {
+        id: 9,
+        start: "2021-02-21",
+        end: "2021-02-28",
+        name: "Finalize lesson plan 1"
+    },
+    {
+        id: 10,
+        start: "2021-02-23",
+        end: "2021-02-23",
+        name: "Approve logo"
+    },
+    {
+        id: 11,
+        start: "2021-03-03",
+        end: "2021-03-29",
+        name: "Create lesson plan 2"
+    },
+    {
+        id: 12,
+        start: "2021-03-30",
+        end: "2021-04-08",
+        name: "Translate phrases for lesson 2"
+    },
+    {
+        id: 13,
+        start: "2021-04-01",
+        end: "2021-04-04",
+        name: "Debug mobile notification error"
+    },
+    {
+        id: 14,
+        start: "2021-04-05",
+        end: "2021-04-06",
+        name: "Test debugged mobile notifications"
+    },
+    {
+        id: 15,
+        start: "2021-04-16",
+        end: "2021-04-30",
+        name: "Beta test"
+    },
+    {
+        id: 16,
+        start: "2021-05-01",
+        end: "2021-05-01",
+        name: "Launch day"
+    }
+];
+exports.default = timelineItems;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"1SgpI":[function(require,module,exports,__globalThis) {
 /**
  * Takes an array of items and assigns them to lanes based on start/end dates.
  * @returns an array of arrays containing items.

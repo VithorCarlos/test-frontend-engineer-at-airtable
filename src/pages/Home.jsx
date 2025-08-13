@@ -1,9 +1,8 @@
-import ReactDOM from "react-dom/client";
-import timelineItems from "./timelineItems.js";
-import { assignLanes } from "./assignLanes.js";
+import timelineItems from "../utils/timelineItems.js";
+import { assignLanes } from "../utils/assignLanes.js";
 import { useCallback, useState } from "react";
 
-function App() {
+export function Home() {
   const [lanes, setLanes] = useState(assignLanes(timelineItems));
 
   const [dragging, setDragging] = useState({
@@ -88,6 +87,3 @@ function App() {
     </section>
   );
 }
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
