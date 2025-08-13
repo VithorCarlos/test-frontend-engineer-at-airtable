@@ -1,6 +1,7 @@
 import timelineItems from "../utils/timelineItems.js";
 import { assignLanes } from "../utils/assignLanes.js";
 import { useCallback, useState } from "react";
+import { TimeLine } from "../components/Timeline";
 
 export function Home() {
   const [lanes, setLanes] = useState(assignLanes(timelineItems));
@@ -11,29 +12,32 @@ export function Home() {
   });
   const [hovered, setHovered] = useState({ laneIndex: null, itemIndex: null });
 
-  const handleDragStart = (laneIndex, itemIndex) => {
+  const handleDragStart = useCallback((laneIndex, itemIndex) => {
     setDragging({ laneIndex, itemIndex });
-  };
+  }, []);
 
   const handleDragOver = useCallback((e) => {
     e.preventDefault();
   }, []);
 
-  const handleDragDrop = (laneIndex, itemIndex) => {
-    if (dragging.laneIndex === null || dragging.itemIndex === null) return;
+  const handleDragDrop = useCallback(
+    (laneIndex, itemIndex) => {
+      if (dragging.laneIndex === null || dragging.itemIndex === null) return;
 
-    const newLanes = lanes.map((lane) => [...lane]);
+      const newLanes = lanes.map((lane) => [...lane]);
 
-    const [movedItem] = newLanes[dragging.laneIndex].splice(
-      dragging.itemIndex,
-      1
-    );
+      const [movedItem] = newLanes[dragging.laneIndex].splice(
+        dragging.itemIndex,
+        1
+      );
 
-    newLanes[laneIndex].splice(itemIndex, 0, movedItem);
+      newLanes[laneIndex].splice(itemIndex, 0, movedItem);
 
-    setLanes(newLanes);
-    setDragging({ laneIndex: null, itemIndex: null });
-  };
+      setLanes(newLanes);
+      setDragging({ laneIndex: null, itemIndex: null });
+    },
+    [lanes, dragging]
+  );
 
   const handleDragEnter = (laneIndex, itemIndex) => {
     setHovered({ laneIndex, itemIndex });
@@ -48,40 +52,27 @@ export function Home() {
     <section>
       <div className="wrapper">
         {lanes.map((laneItems, laneIndex) => (
-          <ul key={laneIndex} className="wrapper-timeline">
+          <TimeLine.Root key={laneIndex}>
             {laneItems.map(({ id, name, start, end }, itemIndex) => (
-              <li
-                key={id}
-                className={`
-                  ${
-                    dragging.laneIndex === laneIndex &&
-                    dragging.itemIndex === itemIndex &&
-                    "dragging"
-                  }
-                  ${
-                    hovered.laneIndex === laneIndex &&
-                    hovered.itemIndex === itemIndex &&
-                    "hovered"
-                  }
-                `}
-                draggable
-                onDragStart={() => handleDragStart(laneIndex, itemIndex)}
-                onDragOver={handleDragOver}
-                onDrop={() => handleDragDrop(laneIndex, itemIndex)}
-                onDragEnter={() => handleDragEnter(laneIndex, itemIndex)}
-                onDragEnd={handleDragEnd}
-              >
-                <div className="content">
-                  <p>
-                    <strong>{name}</strong>
-                  </p>
-                  <span>
-                    started at: {start} and ended at: {end}
-                  </span>
-                </div>
-              </li>
+              <TimeLine.Item
+                key={itemIndex}
+                {...{ id, name, start, end, itemIndex, laneIndex }}
+                isDragging={
+                  dragging.laneIndex === laneIndex &&
+                  dragging.itemIndex === itemIndex
+                }
+                isHovered={
+                  hovered.laneIndex === laneIndex &&
+                  hovered.itemIndex === itemIndex
+                }
+                handleDragStart={handleDragStart}
+                handleDragOver={handleDragOver}
+                handleDragDrop={handleDragDrop}
+                handleDragEnter={handleDragEnter}
+                handleDragEnd={handleDragEnd}
+              />
             ))}
-          </ul>
+          </TimeLine.Root>
         ))}
       </div>
     </section>
