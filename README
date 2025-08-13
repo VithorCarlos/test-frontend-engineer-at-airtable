@@ -1,0 +1,9 @@
+- What you like about your implementation.
+  I enjoyed it because it covered several important React concepts, including performance, drawing and dropping, and the timeline.
+
+- What you would change if you were going to do it again.
+  I'd to change to Typescript, aprimorate the design, create more beatiful component and timeline
+- How you made your design decisions. For example, if you looked at other timelines for inspiration, please note that.
+  I saw some timelines on Pinterest and i'd to implement that and include images, but the time was too short. I just had 3 hours
+- How you would test this if you had more time.
+  i'd like to implement unit tests in this project.
